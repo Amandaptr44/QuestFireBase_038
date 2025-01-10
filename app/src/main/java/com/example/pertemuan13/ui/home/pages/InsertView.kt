@@ -2,12 +2,16 @@ package com.example.pertemuan13.ui.home.pages
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pertemuan13.ui.PenyediaViewModel
+import com.example.pertemuan13.ui.home.viewmodel.FormState
 import com.example.pertemuan13.ui.home.viewmodel.InsertViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun InsertMhsView(
@@ -21,5 +25,30 @@ fun InsertMhsView(
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
-    //observasi perubahan
+    //observasi perubahan state untuk snackbar dan navigasi
+    LaunchedEffect (uiState) {
+        when (uiState) {
+            is FormState.Success -> {
+                println(
+                    "InsertMhsView: uiState is FormState.Success, navigate to home" + uiState.message
+                )
+
+                coroutineScope.launch {
+                    snackbarHostState.showSnackbar(uiState.message) //Tampilkan snackbar
+                }
+                delay(700)
+                //Navigasi Langsung
+                onNavigate()
+
+                viewModel.resetSnackBarMessage() //Reset snackbar state
+            }
+
+            is FormState.Error -> {
+                coroutineScope.launch {
+                    snackbarHostState.showSnackbar(uiState.message)
+                }
+            }
+            else -> Unit
+        }
+    }
 }
