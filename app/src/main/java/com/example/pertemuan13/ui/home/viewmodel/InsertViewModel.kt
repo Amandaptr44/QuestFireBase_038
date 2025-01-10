@@ -88,3 +88,13 @@ data class FormErrorState(
         return nim == null && nama == null && jenisKelamin == null && alamat == null && kelas == null && angkatan == null &&
     }
 }
+
+//data class Variabel yang menyimpan data input form
+data class MahasiswaEvent(
+    val nim: String = "",
+    val nama: String = "",
+    val jenisKelamin: String = "",
+    val alamat: String = "",
+    val kelas: String = "",
+    val angkatan: String = ""
+)
