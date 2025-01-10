@@ -16,3 +16,10 @@ fun InsertMhsView(
     modifier: Modifier = Modifier,
     viewModel: InsertViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
+    val uiState = viewModel.uiState //State utama untuk loading, success, error
+    val uiEvent = viewModel.uiEvent // State untuk form dan validasi
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
+
+    //observasi perubahan
+}
