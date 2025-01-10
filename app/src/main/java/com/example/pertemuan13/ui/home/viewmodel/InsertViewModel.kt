@@ -75,3 +75,12 @@ data class InsertUiState(
     val insertUiState: MahasiswaEvent = MahasiswaEvent(),
     val isEntryValid: FormErrorState
 )
+
+data class FormErrorState(
+    val nim: String? = null,
+    val nama: String? = null,
+    val jenisKelamin: String? = null,
+    val alamat: String? = null,
+    val kelas: String? = null,
+    val angkatan: String? = null,
+)
