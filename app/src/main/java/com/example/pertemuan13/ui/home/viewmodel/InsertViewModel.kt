@@ -1,6 +1,8 @@
 package com.example.pertemuan13.ui.home.viewmodel
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pertemuan13.model.Mahasiswa
@@ -17,7 +19,7 @@ class InsertViewModel(
         private set
 
     //Memperbarui state berdasarkan input pengguna
-    fun updateState(mahasiswaEvent) {
+    fun updateState(mahasiswaEvent: MahasiswaEvent) {
         uiEvent = uiEvent.copy(
             insertUiEvent = mahasiswaEvent,
         )
@@ -57,7 +59,7 @@ class InsertViewModel(
 
     fun resetForm() {
         uiEvent = InsertUiState()
-        uiEvent = FormState.Idle
+        uiState = FormState.Idle
     }
 
     fun resetSnackBarMessage() {
@@ -73,8 +75,8 @@ sealed class FormState{
 }
 
 data class InsertUiState(
-    val insertUiState: MahasiswaEvent = MahasiswaEvent(),
-    val isEntryValid: FormErrorState
+    val insertUiEvent: MahasiswaEvent = MahasiswaEvent(),
+    val isEntryValid: FormErrorState = FormErrorState(),
 )
 
 data class FormErrorState(
@@ -86,7 +88,7 @@ data class FormErrorState(
     val angkatan: String? = null,
 ){
     fun isValid() : Boolean{
-        return nim == null && nama == null && jenisKelamin == null && alamat == null && kelas == null && angkatan == null &&
+        return nim == null && nama == null && jenisKelamin == null && alamat == null && kelas == null && angkatan == null
     }
 }
 
