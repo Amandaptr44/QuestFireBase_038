@@ -232,7 +232,19 @@ fun CardMhs(
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
+                text = mhs.angkatan,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
                 text = mhs.alamat,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = mhs.judul,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = mhs.dosen,
                 style = MaterialTheme.typography.titleMedium
             )
         }
