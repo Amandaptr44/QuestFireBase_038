@@ -164,6 +164,7 @@ fun FormMahasiswa(
 ){
     val jenisKelamin = listOf("Laki - laki", "Perempuan")
     val kelas = listOf("A", "B", "C", "D", "E")
+    val dosen= listOf("Dosen Pembimbing 1", "Dosen Pembimbing 2")
 
     Column (
         modifier = modifier.fillMaxWidth()
@@ -269,5 +270,31 @@ fun FormMahasiswa(
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         Text(text = errorState.angkatan ?: "", color = Color.Red)
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.judul,
+            onValueChange = {
+                onValueChange(mahasiswaEvent.copy(judul = it))
+            },
+            label = { Text("Judul Skripsi") },
+            isError = errorState.judul != null,
+            placeholder = { Text("Masukkan judul skripsi") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        Text(text = errorState.judul ?: "", color = Color.Red)
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.dosen,
+            onValueChange = {
+                onValueChange(mahasiswaEvent.copy(dosen = it))
+            },
+            label = { Text("Dosen Pembimbing") },
+            isError = errorState.dosen != null,
+            placeholder = { Text("Dosen pembimbing") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+        Text(text = errorState.dosen ?: "", color = Color.Red)
     }
 }
