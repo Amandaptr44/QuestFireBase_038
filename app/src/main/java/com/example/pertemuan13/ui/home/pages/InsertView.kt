@@ -273,16 +273,16 @@ fun FormMahasiswa(
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            value = mahasiswaEvent.judul,
+            value = mahasiswaEvent.judulp,
             onValueChange = {
-                onValueChange(mahasiswaEvent.copy(judul = it))
+                onValueChange(mahasiswaEvent.copy(judulp = it))
             },
             label = { Text("Judul Skripsi") },
-            isError = errorState.judul != null,
+            isError = errorState.judulp != null,
             placeholder = { Text("Masukkan judul skripsi") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
-        Text(text = errorState.judul ?: "", color = Color.Red)
+        Text(text = errorState.judulp ?: "", color = Color.Red)
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),

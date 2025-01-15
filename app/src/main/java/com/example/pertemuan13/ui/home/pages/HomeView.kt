@@ -240,7 +240,7 @@ fun CardMhs(
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = mhs.judul,
+                text = mhs.judulp,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(

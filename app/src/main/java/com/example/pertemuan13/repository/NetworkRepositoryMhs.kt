@@ -71,4 +71,8 @@ class NetworkRepositoryMhs (
        }
     }
 
+    override fun getMahasiswabyNim(nim: String): Any {
+        TODO("Not yet implemented")
+    }
+
 }
